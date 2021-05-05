@@ -22,7 +22,7 @@ class Followers extends React.Component {
 render(){
     return (
         <div>
-            <h3>Followers List:</h3>
+            <h3 className="followers-list">Followers List:</h3>
             <div className="container">
 
                {this.state.followers.map(item => {
