@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Followers from './Followers'
+import './App.css'
 
 class App extends React.Component {
 state = {
@@ -20,6 +21,8 @@ componentDidMount() {
       });
 }
 
+
+
 handleChange = (e) =>{
   this.setState({
     followers: e.target.value
@@ -33,7 +36,6 @@ handleSubmit = (e) =>{
     this.setState({
       followers: res.data
       })
-      console.log(res.data)
     })
     .catch(err => {
       console.log(err);

@@ -1,13 +1,14 @@
 import React from 'react'
 import axios from 'axios'
+import './App.css'
 
 class Followers extends React.Component {
     state = {
-        followers: {}
+        followers: []
     }
 
     componentDidMount() {
-        axios.get('https://api.github.com/users/karlaxnieves/followers')
+        axios.get(this.props.data)
             .then(res=> {
                 this.setState({
                     followers: res.data
@@ -21,17 +22,23 @@ class Followers extends React.Component {
 render(){
     return (
         <div>
+            <h3>Followers List:</h3>
             <div className="container">
-                <h3>Followers List:</h3>
-               {/* {this.state.followers.map((item) => {
-                       return (<div key={item.id}>
-                           <a href={item.html_url}>
 
-                           </a>
+               {this.state.followers.map(item => {
+
+                   const name = item.login.toUpperCase();
+
+
+                       return (<div key={item.id}>
+                           <img className="followers-img" src={item.avatar_url} alt='avatarurl'/>
+                           <a href={item.html_url}>
+                               <h3>{`@${name}`}</h3>
+                               </a> 
                        </div>
                        )
                    })
-               } */}
+               }
             </div>
         </div>
     )
