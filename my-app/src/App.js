@@ -59,7 +59,7 @@ handleSubmit = (e) =>{
       <h3>Following: {this.state.user.following}</h3>
       <h3>Followers: {this.state.user.followers}</h3>
       </div>
-      <Followers data={this.state.user.followers_url}/>
+      <Followers />
     </div>
   );
 }

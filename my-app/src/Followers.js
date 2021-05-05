@@ -8,10 +8,10 @@ class Followers extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(this.props.data)
+        axios.get('https://api.github.com/users/karlaxnieves/followers')
             .then(res=> {
                 this.setState({
-                    followers: res.data
+                    followers: res.data,
                 });
             })
             .catch(err => {
@@ -20,28 +20,16 @@ class Followers extends React.Component {
       }
       
 render(){
-    return (
-        <div>
-            <h3 className="followers-list">Followers List:</h3>
-            <div className="container">
-
-               {this.state.followers.map(item => {
-
-                   const name = item.login.toUpperCase();
-
-
-                       return (<div key={item.id}>
-                           <img className="followers-img" src={item.avatar_url} alt='avatarurl'/>
-                           <a href={item.html_url}>
-                               <h3>{`@${name}`}</h3>
-                               </a> 
-                       </div>
-                       )
-                   })
-               }
-            </div>
-        </div>
-    )
+    const {followers} = this.state
+    if(followers.length == 0) return <p>Loading Followers..</p>
+    return (<div>
+           {followers.map(follower => (
+               <div key={follower.id} className="container">
+                   <img className="followers-img " src={follower.avatar_url} alt={follower.login} />
+                   <h4>{follower.login}</h4>
+               </div>
+           ))}
+        </div>)
 }
 }
 
