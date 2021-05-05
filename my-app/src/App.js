@@ -4,8 +4,7 @@ import Followers from './Followers'
 
 class App extends React.Component {
 state = {
-  user: {},
-  followers: {}
+  user: {}
 }
 
 componentDidMount() {
