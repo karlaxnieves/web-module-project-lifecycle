@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Followers from './Followers'
 import './App.css';
 
 class App extends React.Component {
@@ -29,7 +30,7 @@ handleChange = (e)=> {
 handleSubmit = (e) =>{
   e.preventDefault();
 
-  axios.get(`https://api.github.com/users/karlaxnieves/${this.state.followers}`)
+  axios.get(`https://api.github.com/users/${this.state.followers}`)
   .then(res =>{
     this.setState({
       followers: res.data
@@ -58,7 +59,7 @@ handleSubmit = (e) =>{
       <h3>Following: {this.state.user.following}</h3>
       <h3>Followers: {this.state.user.followers}</h3>
       </div>
-     
+     <Followers/>
     </div>
   );
 }
